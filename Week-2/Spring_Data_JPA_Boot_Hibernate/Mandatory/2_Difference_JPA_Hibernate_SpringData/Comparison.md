@@ -48,4 +48,4 @@
 Our own `CountryRepository` (Exercise 1) is a direct real-world example: extending
 `JpaRepository<Country, String>` gave us `findAll()`, `findById()`, `save()`, and
 `deleteById()` with zero implementation code — Spring Data JPA generated all of it
-at runtime, on top of Hibernate as the underlying JPA provider.
+at runtime, on top of Hibernate as the underlying JPA provider.cd

@@ -1,0 +1,499 @@
+1. WHAT IS REST?
+----------------
+REST (Representational State Transfer) is an architectural style used to build web services that allow communication between clients and servers over HTTP.
+
+Characteristics:
+- Stateless
+- Client-Server Architecture
+- Cacheable
+- Uniform Interface
+- Uses HTTP Protocol
+
+Example:
+Client ---> HTTP Request ---> Spring Boot REST API ---> JSON Response
+
+----------------------------------------------------
+
+2. REST API
+-----------
+A REST API exposes resources using URLs.
+
+Example:
+GET /country
+
+Response:
+{
+   "code":"IN",
+   "name":"India"
+}
+
+----------------------------------------------------
+
+3. REST vs SOAP
+---------------
+
+REST
+- Lightweight
+- Uses HTTP
+- JSON/XML
+- Faster
+- Easy to develop
+
+SOAP
+- Heavyweight
+- XML Protocol
+- XML only
+- Slower
+- Complex
+
+----------------------------------------------------
+
+4. HTTP METHODS
+---------------
+
+GET
+- Retrieve data.
+
+POST
+- Create new data.
+
+PUT
+- Update complete object.
+
+PATCH
+- Update partial object.
+
+DELETE
+- Delete data.
+
+----------------------------------------------------
+
+5. HTTP STATUS CODES
+--------------------
+
+200 OK
+201 Created
+204 No Content
+400 Bad Request
+401 Unauthorized
+403 Forbidden
+404 Not Found
+500 Internal Server Error
+
+----------------------------------------------------
+
+6. SPRING BOOT REST ARCHITECTURE
+--------------------------------
+
+Client
+   |
+HTTP Request
+   |
+DispatcherServlet
+   |
+Controller
+   |
+Service
+   |
+Repository
+   |
+Database
+
+Response follows the reverse path.
+
+----------------------------------------------------
+
+7. @RestController
+------------------
+
+Used to create REST APIs.
+
+Example:
+
+@RestController
+public class HelloController {
+
+}
+
+@RestController =
+@Controller + @ResponseBody
+
+Returns JSON directly.
+
+----------------------------------------------------
+
+8. @RequestMapping
+------------------
+
+Maps URL to a method.
+
+Example:
+
+@RequestMapping("/country")
+
+----------------------------------------------------
+
+9. @GetMapping
+
+Handles GET request.
+
+Example:
+
+@GetMapping("/country")
+
+Equivalent to:
+
+@RequestMapping(value="/country", method=RequestMethod.GET)
+
+----------------------------------------------------
+
+10. @PostMapping
+
+Handles POST request.
+
+Example:
+
+@PostMapping("/country")
+
+----------------------------------------------------
+
+11. @PutMapping
+
+Handles PUT request.
+
+Example:
+
+@PutMapping("/country/{id}")
+
+----------------------------------------------------
+
+12. @DeleteMapping
+
+Handles DELETE request.
+
+Example:
+
+@DeleteMapping("/country/{id}")
+
+----------------------------------------------------
+
+13. @PathVariable
+
+Reads data from URL.
+
+Example:
+
+GET /countries/in
+
+@GetMapping("/countries/{code}")
+public Country getCountry(@PathVariable String code)
+
+code = "in"
+
+----------------------------------------------------
+
+14. @RequestParam
+
+Reads query parameters.
+
+Example:
+
+GET /country?id=10
+
+public Country getCountry(@RequestParam int id)
+
+----------------------------------------------------
+
+15. @RequestBody
+
+Reads JSON request body.
+
+Example Request:
+
+{
+   "name":"India"
+}
+
+@PostMapping("/country")
+public Country save(@RequestBody Country country)
+
+----------------------------------------------------
+
+16. @ResponseBody
+
+Converts Java Object into JSON.
+
+@RestController already includes @ResponseBody.
+
+----------------------------------------------------
+
+17. JACKSON
+
+Spring Boot uses Jackson automatically.
+
+Java Object
+      ↓
+JSON
+
+Example:
+
+Country
+
+↓
+
+{
+  "code":"IN",
+  "name":"India"
+}
+
+----------------------------------------------------
+
+18. HELLO WORLD REST EXAMPLE
+
+@RestController
+public class HelloController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World!!";
+    }
+
+}
+
+URL:
+
+GET /hello
+
+Output:
+
+Hello World!!
+
+----------------------------------------------------
+
+19. COUNTRY EXAMPLE
+
+@GetMapping("/country")
+
+public Country getCountry(){
+
+    return new Country("IN","India");
+
+}
+
+Response:
+
+{
+   "code":"IN",
+   "name":"India"
+}
+
+----------------------------------------------------
+
+20. RETURNING LIST
+
+@GetMapping("/countries")
+
+public List<Country> getCountries()
+
+Response:
+
+[
+ {
+   "code":"IN",
+   "name":"India"
+ },
+ {
+   "code":"US",
+   "name":"United States"
+ }
+]
+
+----------------------------------------------------
+
+21. SERVICE LAYER
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+Example:
+
+@Autowired
+CountryService service;
+
+----------------------------------------------------
+
+22. DEPENDENCY INJECTION
+
+Spring creates objects automatically.
+
+@Autowired
+private CountryService service;
+
+No need to write:
+
+new CountryService();
+
+----------------------------------------------------
+
+23. XML CONFIGURATION
+
+Load XML:
+
+ClassPathXmlApplicationContext context =
+new ClassPathXmlApplicationContext("country.xml");
+
+Get Bean:
+
+Country country =
+context.getBean("country", Country.class);
+
+----------------------------------------------------
+
+24. LOGGING
+
+private static final Logger LOGGER =
+LoggerFactory.getLogger(CountryController.class);
+
+LOGGER.info("START");
+
+LOGGER.info("END");
+
+----------------------------------------------------
+
+25. TESTING REST APIs
+
+Browser
+
+http://localhost:8083/hello
+
+Postman
+
+GET
+http://localhost:8083/country
+
+Curl
+
+curl http://localhost:8083/country
+
+----------------------------------------------------
+
+26. HTTP HEADERS
+
+Request Headers
+
+Host
+Accept
+Authorization
+Content-Type
+
+Response Headers
+
+Content-Type
+Content-Length
+Date
+Server
+
+----------------------------------------------------
+
+27. BASIC AUTHENTICATION
+
+Username + Password
+
+Authorization Header:
+
+Authorization: Basic dXNlcjpwd2Q=
+
+Postman:
+Authorization → Basic Auth
+
+----------------------------------------------------
+
+28. JWT (JSON WEB TOKEN)
+
+JWT Structure
+
+Header.Payload.Signature
+
+Example
+
+eyJhbGciOiJIUzI1NiJ9.
+eyJzdWIiOiJ1c2VyIn0.
+Qwerty123456789
+
+Used for Stateless Authentication.
+
+----------------------------------------------------
+
+29. REST REQUEST FLOW
+
+Browser/Postman
+
+↓
+
+HTTP Request
+
+↓
+
+DispatcherServlet
+
+↓
+
+Controller
+
+↓
+
+Service
+
+↓
+
+Repository
+
+↓
+
+Database
+
+↓
+
+JSON Response
+
+----------------------------------------------------
+
+30. SPRING BOOT REST ANNOTATIONS
+
+@RestController
+Creates REST API.
+
+@RequestMapping
+Maps URL.
+
+@GetMapping
+GET Request.
+
+@PostMapping
+POST Request.
+
+@PutMapping
+PUT Request.
+
+@DeleteMapping
+DELETE Request.
+
+@PathVariable
+Reads value from URL.
+
+@RequestParam
+Reads query parameter.
+
+@RequestBody
+Reads JSON body.
+
+@Autowired
+Dependency Injection.
+

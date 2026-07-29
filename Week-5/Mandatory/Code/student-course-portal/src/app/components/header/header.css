@@ -1,0 +1,104 @@
+.global-error-banner {
+    background-color: #d32f2f;
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.35);
+    z-index: 1000;
+    font-size: 15px;
+    animation: slideDown 0.25s ease-out;
+    border-bottom: 2px solid #9a0007;
+}
+
+.error-text {
+    flex-grow: 1;
+    white-space: pre-wrap;
+}
+
+.dismiss-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 5px 14px;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    margin-left: 20px;
+}
+
+.dismiss-btn:hover {
+    background-color: white;
+    color: #d32f2f;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+nav h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+nav a:hover {
+    opacity: 0.85;
+}
+
+.auth-btn {
+    background-color: #2e7d32;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.auth-btn.logged-out {
+    background-color: #d32f2f;
+}
+
+.auth-btn:hover {
+    opacity: 0.9;
+}
+
+.enrollment-toast {
+    background-color: #ff9800;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s ease-out;
+    border-bottom: 2px solid #e65100;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

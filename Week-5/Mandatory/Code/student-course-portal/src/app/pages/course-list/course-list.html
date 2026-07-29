@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Available Courses</h2>
+  <p class="subtitle">Browse and enroll in your required courses for this semester (powered by RxJS Observables &amp; HttpClient REST API).</p>
+
+  <app-course-summary-widget></app-course-summary-widget>
+
+  <!-- Step 92: Interactive test trigger for simulated API Server Failure & Red Warning Banner -->
+  <div class="api-controls">
+    <button class="error-test-btn" (click)="onTestApiError()">⚡ Simulate Failed API Request (Test Error Interceptor &amp; Banner)</button>
+  </div>
+
+  <!-- Debounced Reactive Search Bar (Step 84) -->
+  <div class="filter-box">
+    <input
+      type="text"
+      [value]="searchTerm"
+      (input)="onSearchInput($event)"
+      placeholder="Type to search (debounced 300ms via RxJS switchMap over REST API)..."
+      class="search-input"
+    />
+  </div>
+
+  <p *ngIf="isLoading; else courseContent" class="loading-msg">Loading course stream via HttpClient...</p>
+
+  <ng-template #courseContent>
+    <!-- Step 83: Consume Observable cleanly using async pipe -->
+    <div class="courses-list" *ngIf="(courses$ | async) as courseList; else loadingStream">
+      <div *ngIf="courseList.length > 0; else noCourses" class="courses-list">
+        <div class="card-wrapper" *ngFor="let course of courseList; let i = index; trackBy: trackByCourseId" (click)="onCardClick(course.id)">
+          <app-course-card
+            [course]="course"
+            appHighlight="lightblue"
+            (enrollRequested)="onEnroll($event)"
+          ></app-course-card>
+        </div>
+      </div>
+    </div>
+    <ng-template #loadingStream>
+      <p class="loading-msg">Fetching REST observables...</p>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #noCourses>
+    <p class="empty-text">No courses found matching your criteria.</p>
+  </ng-template>
+
+  <div class="selected-info" *ngIf="selectedCourseId">
+    <p *ngIf="selectedCourseId">Selected course ID: {{ selectedCourseId }}</p>
+  </div>
+</div>

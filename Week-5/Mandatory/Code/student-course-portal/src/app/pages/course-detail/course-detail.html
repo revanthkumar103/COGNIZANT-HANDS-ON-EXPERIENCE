@@ -1,0 +1,29 @@
+<div class="detail-container" *ngIf="course; else notFoundCourse">
+  <div class="detail-header">
+    <span class="badge">{{ course.code }}</span>
+    <h2>{{ course.name }}</h2>
+  </div>
+  
+  <div class="detail-body">
+    <p class="info-row"><strong>Course Identifier:</strong> #{{ course.id }}</p>
+    <p class="info-row"><strong>Academic Credits:</strong> {{ course.credits ?? 'No Credits Assumed' }}</p>
+    <p class="info-row"><strong>Current Grading Status:</strong> <span [class]="'status-' + course.gradeStatus">{{ course.gradeStatus }}</span></p>
+    <div class="description-box">
+      <h4>Course Overview</h4>
+      <p>This course explores core concepts in {{ course.name }}, providing foundational understanding, real-world case studies, and practical programming workflows designed for comprehensive technical mastery.</p>
+    </div>
+  </div>
+
+  <div class="detail-actions">
+    <button class="enroll-action" (click)="toggleEnrollment()">{{ isEnrolled ? 'Unenroll from Course' : 'Enroll in Course' }}</button>
+    <a routerLink="/courses" class="back-link">← Back to Courses Grid</a>
+  </div>
+</div>
+
+<ng-template #notFoundCourse>
+  <div class="error-container">
+    <h3>Course Identifier Not Found</h3>
+    <p>We could not locate any active course associated with ID <strong>{{ idParam }}</strong> in the catalog.</p>
+    <a routerLink="/courses" class="back-link">Return to Course Directory</a>
+  </div>
+</ng-template>

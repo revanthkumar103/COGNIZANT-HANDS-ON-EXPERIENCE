@@ -1,0 +1,93 @@
+.profile-container {
+  max-width: 800px;
+  margin: 35px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  color: #1976d2;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.enrollment-section {
+  margin-top: 25px;
+}
+
+.enrollment-section h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.enrolled-card {
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-left: 5px solid #2e7d32;
+  border-radius: 8px;
+}
+
+.course-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.course-code {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 8px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.course-header h4 {
+  margin: 0;
+  color: #212529;
+  font-size: 17px;
+}
+
+.credits {
+  margin: 0;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.status-passed { color: #2e7d32; font-weight: 600; text-transform: capitalize; }
+.status-failed { color: #d32f2f; font-weight: 600; text-transform: capitalize; }
+.status-pending { color: #f57f17; font-weight: 600; text-transform: capitalize; }
+
+.empty-state {
+  padding: 25px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border: 1px dashed #ced4da;
+  border-radius: 8px;
+  color: #6c757d;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 15px;
+}

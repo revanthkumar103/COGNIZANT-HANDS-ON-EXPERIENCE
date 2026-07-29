@@ -1,0 +1,28 @@
+.courses-layout-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.layout-banner {
+  margin: 20px 0;
+  padding: 16px 24px;
+  background: linear-gradient(to right, #1976d2, #2196f3);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(25, 118, 210, 0.2);
+}
+
+.layout-banner h3 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+}
+
+.layout-banner p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.nested-content {
+  margin-top: 20px;
+}

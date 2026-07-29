@@ -1,0 +1,24 @@
+<!-- Step 92: Global Error Notification Warning Banner -->
+<div class="global-error-banner" *ngIf="globalErrorMsg">
+    <span class="error-text">⚠️ <strong>HTTP Request Failed:</strong> {{ globalErrorMsg }}</span>
+    <button class="dismiss-btn" (click)="onDismissError()">Dismiss ✕</button>
+</div>
+
+<nav>
+    <h2>Student Course Portal</h2>
+    <div class="nav-links">
+        <a routerLink="/">Home</a>
+        <a routerLink="/courses">Courses</a>
+        <a routerLink="/enroll">Enroll</a>
+        <a routerLink="/register">Register</a>
+        <a routerLink="/profile">Profile</a>
+        <button class="auth-btn" [class.logged-out]="!authService.isLoggedIn" (click)="onToggleAuth()">
+          {{ authService.isLoggedIn ? 'Logout (Test AuthGuard)' : 'Login (Test AuthGuard)' }}
+        </button>
+    </div>
+</nav>
+
+<!-- Step 85: Live RxJS Subject Enrollment Toast Notification -->
+<div class="enrollment-toast" *ngIf="latestEnrollmentMsg">
+    <span>📢 {{ latestEnrollmentMsg }}</span>
+</div>

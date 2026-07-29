@@ -1,0 +1,8 @@
+<div class="notification-box">
+  <h4>Scoped Component Notification Panel</h4>
+  <p class="explanation">This widget uses a component-level provider (`providers: [NotificationService]`) to maintain isolated state per component instance.</p>
+  <ul>
+    <li *ngFor="let msg of notificationService.getMessages()">{{ msg }}</li>
+  </ul>
+  <button class="notif-btn" (click)="addAlert()">+ Push Scoped Alert</button>
+</div>

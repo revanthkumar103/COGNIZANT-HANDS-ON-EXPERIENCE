@@ -1,0 +1,28 @@
+<div class="card" [ngClass]="cardClasses" [ngStyle]="{ 'border-left-color': getBorderColor(course.gradeStatus) }">
+  <div class="card-header">
+    <span class="code">{{ course.code }}</span>
+    <span class="status-badge" [ngSwitch]="course.gradeStatus">
+      <span *ngSwitchCase="'passed'" class="badge passed">Passed</span>
+      <span *ngSwitchCase="'failed'" class="badge failed">Failed</span>
+      <span *ngSwitchCase="'pending'" class="badge pending">Pending</span>
+      <span *ngSwitchDefault class="badge default">Pending</span>
+    </span>
+  </div>
+
+  <h3>{{ course.name }}</h3>
+
+  <p class="credits">{{ course.credits ?? 0 | creditLabel }}</p>
+
+  <div class="details" *ngIf="isExpanded">
+    <p><strong>Course ID:</strong> {{ course.id }}</p>
+    <p>This is a foundational course in the college software architecture curriculum designed to teach production workflows and deep technical skills.</p>
+  </div>
+
+  <div class="card-actions">
+    <!-- Step 93: Optimistic UI transitions from Enrolling... to Enrolled ✓ -->
+    <button class="enroll-btn" [disabled]="isEnrolling" (click)="$event.stopPropagation(); onEnrollClick()">
+      {{ isEnrolling ? '⏳ Enrolling...' : (isEnrolled ? '✓ Enrolled' : 'Enroll') }}
+    </button>
+    <button class="details-btn" (click)="$event.stopPropagation(); onToggleDetails()">{{ isExpanded ? 'Hide Details' : 'Show Details' }}</button>
+  </div>
+</div>

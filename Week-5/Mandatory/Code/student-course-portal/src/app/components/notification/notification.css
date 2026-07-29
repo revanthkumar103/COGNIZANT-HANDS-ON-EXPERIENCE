@@ -1,0 +1,45 @@
+.notification-box {
+  margin: 25px 0;
+  padding: 18px;
+  background-color: #fff8e1;
+  border: 1px solid #ffe853;
+  border-radius: 8px;
+  color: #5d4037;
+}
+
+.notification-box h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #f57f17;
+}
+
+.explanation {
+  font-size: 13px;
+  color: #795548;
+  margin-bottom: 12px;
+}
+
+ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.notif-btn {
+  background-color: #ffa000;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.notif-btn:hover {
+  background-color: #ff8f00;
+}

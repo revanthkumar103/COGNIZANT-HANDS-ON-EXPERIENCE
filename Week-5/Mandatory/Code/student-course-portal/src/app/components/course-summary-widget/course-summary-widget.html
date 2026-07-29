@@ -1,0 +1,27 @@
+<div class="summary-widget">
+  <div class="widget-header">
+    <h4>🚀 Course Catalog Reactive Dashboard</h4>
+    <span class="onpush-badge">⚡ OnPush Strategy</span>
+  </div>
+  
+  <div class="stats-grid">
+    <div class="stat-box">
+      <span class="label">Total Courses (signal)</span>
+      <span class="value">{{ courseService.coursesSignal().length }}</span>
+    </div>
+    <div class="stat-box">
+      <span class="label">Passed Courses (computed)</span>
+      <span class="value passed">{{ courseService.passedCoursesCount() }}</span>
+    </div>
+    <div class="stat-box">
+      <span class="label">Total Credits (computed)</span>
+      <span class="value credits">{{ courseService.totalCredits() }}</span>
+    </div>
+  </div>
+
+  <p class="tagline">🔥 Powered by Angular <strong>signal()</strong>, <strong>computed()</strong> &amp; <strong>effect()</strong> without manual subscriptions or async pipes!</p>
+  
+  <div class="actions">
+    <button class="add-btn" (click)="addDummyCourse()">+ Add Sample Course (Test Signal Store &amp; OnPush)</button>
+  </div>
+</div>

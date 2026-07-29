@@ -2,7 +2,7 @@
 
 Hands-on lab solutions, mini-projects, and microservices built as part of Cognizant's **Digital Nurture 5.0 (DN 5.0)** Java Full Stack Engineer training program.
 
-**Author:** Gurrammagare Revanth Kumar
+**Author:** Gurrammagari Revanth Kumar
 **Program:** Cognizant DN 5.0 — Java Full Stack Engineer
 **Institution:** R.M.K Engineering College, Tamil Nadu
 
